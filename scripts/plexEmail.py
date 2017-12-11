@@ -347,8 +347,9 @@ def getSharedUserEmails():
   for elem in parsed:
     for name, value in sorted(elem.attrib.items()):
       if (name == 'email'):
-        logging.info('getSharedUserEmails: adding email - ' + value.lower())
-        emails.append(value.lower())
+        if value:
+          logging.info('getSharedUserEmails: adding email - ' + value.lower())
+          emails.append(value.lower())
   
   logging.info('getSharedUserEmails: Returning shared emails')
   logging.debug('getSharedUserEmails: email list - ' + ' '.join(emails))
